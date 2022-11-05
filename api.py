@@ -8,11 +8,15 @@ from app.process.tempo import previsao
 
 app = Flask(__name__)
 
+
+@app.route('/')
+def index():                
+    return 'pagina inicial'
+
 @app.route('/tempo/<cidade>', methods = ['GET'])
 def tempo(cidade):                
     resultado = previsao(cidade)
     return  resultado
-
 
 
 
