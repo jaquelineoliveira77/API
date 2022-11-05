@@ -13,6 +13,8 @@ def index():
 @app.route('/tempo/<cidade>', methods = ['GET'])
 def tempo(cidade):                
     resultado = previsao(cidade)
+    if resultado == None:
+        return 'Cidade incorreta'
     return jsonify({
         'cidade': resultado['cidade'],
         'clima': resultado['clima'],
