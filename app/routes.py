@@ -1,4 +1,4 @@
-from flask import jsonify, render_template
+from flask import jsonify, render_template, flash
 
 from app import app
 from app.forms import EscolhaCidade
@@ -11,9 +11,13 @@ from app.process.tempo import previsao
 def index():                
     return render_template('index.html')
 
-@app.route('/escolha')
+@app.route('/escolha', methods=['GET','POST'])
 def escolha():
     form = EscolhaCidade()
+    if form.validate_on_submit():
+        flash(f'{form.cidade.data}')
+        cidade = form.cidade.data
+        return render_template('previsao.html', cidade=cidade)
     return render_template('escolha.html', form=form)
 
 @app.route('/previsao')

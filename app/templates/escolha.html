@@ -2,14 +2,9 @@
 
 {% block content %}
     <h1>Escolha cidade</h1>
-    <form action="" method="post" novalidate>
+    <form action="" method="POST">
         {{ form.hidden_tag() }}
-        <h2>
-            {{ form.cidade }}
-        </h2>
-        {% for cidade in form.cidade %}
-
-        {% endfor %}
+        {{ form.cidade }}
         <p>{{ form.submit() }}</p>
     </form>
 {% endblock %}
