@@ -1,3 +1,4 @@
 Flask
 httpx
+flask-wtf
 python-dotenv
